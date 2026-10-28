@@ -17,6 +17,7 @@ import {
   ArrowUpRight,
   ArrowRightLeft,
   X,
+  Cloud,
 } from 'lucide-react';
 import { AndroidStatusBar } from './AndroidStatusBar';
 
@@ -28,7 +29,8 @@ export type MainTab =
   | 'settings'
   | 'accounts'
   | 'budget'
-  | 'calendar';
+  | 'calendar'
+  | 'drive';
 
 interface AndroidShellProps {
   currentTab: MainTab;
@@ -154,6 +156,18 @@ export const AndroidShell: React.FC<AndroidShellProps> = ({
                 title="Calendar & Due Bills"
               >
                 <Calendar className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => onSelectTab('drive')}
+                className={`p-2 rounded-xl transition-colors ${
+                  currentTab === 'drive'
+                    ? 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-semibold'
+                    : 'text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+                title="Google Drive Cloud Sync"
+              >
+                <Cloud className="w-4 h-4" />
               </button>
             </div>
           </div>

@@ -16,6 +16,7 @@ import {
   AlertTriangle,
   Info,
   IndianRupee,
+  Cloud,
 } from 'lucide-react';
 import { UserSettings, AppDatabaseState } from '../../types';
 import { exportTransactionsToCSV } from '../../utils/export';
@@ -27,6 +28,7 @@ interface SettingsViewProps {
   onRestoreDatabase: (importedState: AppDatabaseState) => void;
   onResetDatabase: () => void;
   onOpenApkHub: () => void;
+  onOpenGoogleDrive: () => void;
 }
 
 export const SettingsView: React.FC<SettingsViewProps> = ({
@@ -35,6 +37,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   onRestoreDatabase,
   onResetDatabase,
   onOpenApkHub,
+  onOpenGoogleDrive,
 }) => {
   const { settings } = data;
   const [showPinConfig, setShowPinConfig] = useState(false);
@@ -133,6 +136,25 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           className="px-3.5 py-2 rounded-xl bg-white text-emerald-800 font-bold text-xs shadow-md hover:bg-emerald-50 active:scale-95 transition-all shrink-0"
         >
           View Hub
+        </button>
+      </div>
+
+      {/* Google Drive Integration Card */}
+      <div className="p-4 rounded-3xl bg-linear-to-r from-indigo-900 via-indigo-950 to-slate-900 text-white shadow-lg flex items-center justify-between border border-indigo-800/80">
+        <div className="space-y-1">
+          <div className="flex items-center gap-1.5 font-bold text-sm text-indigo-300">
+            <Cloud className="w-5 h-5 text-indigo-400" />
+            Google Drive Cloud Sync
+          </div>
+          <p className="text-xs text-slate-300 max-w-sm">
+            Automatic cloud backup, restore, and receipt storage in your Google Drive.
+          </p>
+        </div>
+        <button
+          onClick={onOpenGoogleDrive}
+          className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md active:scale-95 transition-all shrink-0"
+        >
+          Manage Drive
         </button>
       </div>
 

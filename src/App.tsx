@@ -36,6 +36,7 @@ import { CalendarView } from './components/calendar/CalendarView';
 import { SettingsView } from './components/settings/SettingsView';
 import { ApkSourceHub } from './components/apk/ApkSourceHub';
 import { PinLockModal } from './components/security/PinLockModal';
+import { GoogleDriveHub } from './components/drive/GoogleDriveHub';
 
 export default function App() {
   const [data, setData] = useState<AppDatabaseState>(() => loadDatabase());
@@ -410,6 +411,14 @@ export default function App() {
             onRestoreDatabase={handleRestoreDatabase}
             onResetDatabase={handleResetDatabase}
             onOpenApkHub={() => setIsApkHubOpen(true)}
+            onOpenGoogleDrive={() => setCurrentTab('drive')}
+          />
+        )}
+
+        {currentTab === 'drive' && (
+          <GoogleDriveHub
+            data={data}
+            onRestoreDatabase={handleRestoreDatabase}
           />
         )}
 
