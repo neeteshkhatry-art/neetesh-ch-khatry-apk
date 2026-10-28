@@ -39,11 +39,11 @@ jobs:
 
       - name: Generate and Verify Android Release APK
         run: |
-          mkdir -p build/app/outputs/flutter-apk
-          if [ -d "flutter_app" ]; then
-            cd flutter_app
-            flutter pub get
-            flutter build apk --release
+       -   mkdir -p build/app/outputs/flutter-apk
+        -  if [ -d "flutter_app" ]; then
+         -   cd flutter_app
+          -  flutter pub get
+           - flutter build apk --release
             cp build/app/outputs/flutter-apk/app-release.apk ../build/app/outputs/flutter-apk/
             cd ..
           fi
